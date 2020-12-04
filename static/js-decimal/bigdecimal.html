@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="mathcontext.js"></script>
+  <script src="bigdecimal.js"></script>
+</head>
+<body>
+<script>
+  function test(decimalRule,d){
+    if ("01sswrtoyuan".includes(decimalRule)) {
+//			01sswrtoyuan	四舍五入到元	四舍五入到元	保留0位小数
+      let bg = new BigDecimal(d);
+      let f1 = bg.setScale(0, MathContext.prototype.ROUND_HALF_UP).toString() + '.00';
+      return f1;
+    } else if ("02sswrtojiao".includes(decimalRule)) {
+//			02sswrtojiao	四舍五入到角	四舍五入到角	保留1位小数
+      let bg = new BigDecimal(d);
+      let f1 = bg.setScale(1, MathContext.prototype.ROUND_HALF_UP).toString() + '0';
+      return f1;
+    } else if ("03sswrtofen".includes(decimalRule)) {
+//			03sswrtofen	四舍五入到分	四舍五入到分	保留2位小数
+      let bg = new BigDecimal(d);
+      let f1 = bg.setScale(2, MathContext.prototype.ROUND_HALF_UP).toString();
+      return f1;
+    } else if ("04sswrtoli".includes(decimalRule)) {
+//			04sswrtoli	四舍五入到厘	四舍五入到厘	保留3位小数
+      let bg = new BigDecimal(d);
+      let f1 = bg.setScale(3, MathContext.prototype.ROUND_HALF_UP).toString();
+      return f1;
+    } else if ("05jjjy".includes(decimalRule)) {
+//			05jjjy	见角进元	见角进元	保留0位小数
+      let bg = new BigDecimal(d);
+      let isSum = '1'
+      if (d.split('.')[1]) {
+        isSum = d.split('.')[1].substring(0, 1)
+      } else {
+        isSum = '1'
+      }
+      let f1 = 0;
+      if ("0".includes(isSum)){
+        f1 = bg.setScale(0, MathContext.prototype.ROUND_HALF_UP).toString() + '.00';
+      } else {
+        f1 = bg.setScale(0, MathContext.prototype.ROUND_UP).toString()  + '.00';
+      }
+      return f1;
+    } else if ("06jfjj".includes(decimalRule)) {
+//			06jfjj	见分进角	见分进角	保留1位小数
+      let bg = new BigDecimal(d);
+      let f1 = 0;
+      let isSum = '1'
+      if (d.split('.')[1]) {
+        isSum = d.split('.')[1].substring(1, 2)
+      } else {
+        isSum = '1'
+      }
+      if ("0".includes(isSum)){
+        f1 = bg.setScale(1, MathContext.prototype.ROUND_DOWN).toString() + '0';
+      } else {
+        f1 = bg.setScale(1, MathContext.prototype.ROUND_UP).toString() + '0';
+      }
+      return f1;
+    } else if ("07jljf".includes(decimalRule)) {
+//			07jljf	见厘进分	见厘进分	保留2位小数
+      let bg = new BigDecimal(d);
+      let f1 = 0;
+      let isSum = '1'
+      if (d.split('.')[1]) {
+        isSum = d.split('.')[1].substring(2, 3)
+      } else {
+        isSum = '1'
+      }
+      if ("0".includes(isSum)){
+        f1 = bg.setScale(2, MathContext.prototype.ROUND_DOWN).toString();
+      } else {
+        f1 = bg.setScale(2, MathContext.prototype.ROUND_UP).toString();
+      }
+      return f1;
+    } else if ("08jhjl".includes(decimalRule)) {
+//			08jhjl	见毫进厘	见毫进厘	保留3位小数
+      let bg = new BigDecimal(d);
+      let f1 = 0;
+      let isSum = '1'
+      if (d.split('.')[1]) {
+        isSum = d.split('.')[1].substring(3, 4)
+      } else {
+        isSum = '1'
+      }
+      if ("0".includes(isSum)){
+        f1 = bg.setScale(3, MathContext.prototype.ROUND_DOWN).toString();
+      } else {
+        f1 = bg.setScale(3, MathContext.prototype.ROUND_UP).toString();
+      }
+      return f1;
+    } else if ("09qstoyuan".includes(decimalRule)) {
+//			09qstoyuan	全舍到元	全舍到元	保留0位小数.
+      let bg = new BigDecimal(d);
+      let f1 = bg.setScale(0, MathContext.prototype.ROUND_DOWN).toString() + '.00';
+      return f1;
+
+    } else if ("10qstojiao".includes(decimalRule)) {
+//			10qstojiao	全舍到角	全舍到角	保留1位小数
+      let bg = new BigDecimal(d);
+      let f1 = bg.setScale(1, MathContext.prototype.ROUND_DOWN).toString()  + '0';
+      return f1;
+    } else if ("11qstofen".includes(decimalRule)) {
+//			11qstofen	全舍到分	全舍到分	保留2位小数
+      let bg = new BigDecimal(d);
+      let f1 = bg.setScale(2, MathContext.prototype.ROUND_DOWN).toString();
+      return f1;
+    } else if ("12qstoli".includes(decimalRule)) {
+//			12qstoli	全舍到厘	全舍到厘	保留3位小数
+      let bg = new BigDecimal(d);
+      let f1 = bg.setScale(3, MathContext.prototype.ROUND_DOWN).toString();
+      return f1;
+    }
+
+  }
+  console.log(test('01sswrtoyuan', '1.61'))
+  console.log(test('02sswrtojiao', '1.62'))
+  console.log(test('03sswrtofen', '9.99'))
+  console.log(test('04sswrtoli', '1.65756'))
+  console.log(test('05jjjy', '1.65'))
+  console.log(test('05jjjy', '1.05'))
+  console.log(test('06jfjj', '215.27'))
+  console.log(test('06jfjj', '100.820'))
+  console.log(test('06jfjj', '100.821'))
+  console.log(test('07jljf', '100.820'))
+  console.log(test('07jljf', '100.821'))
+  console.log(test('07jljf', '1.1'))
+  console.log(test('08jhjl', '1.0000'))
+  console.log(test('08jhjl', '1.0007'))
+  console.log(test('09qstoyuan', '9.123'))
+  console.log(test('10qstojiao', '19.123'))
+  console.log(test('11qstofen', '12.123'))
+  console.log(test('12qstoli', '12.12398'))
+</script>
+</body>
+</html>

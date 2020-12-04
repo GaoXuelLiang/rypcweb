@@ -1,0 +1,63 @@
+.table-form {
+  .ivu-table {
+    .p_flowst_0 {
+      .ivu-table-cell {
+        height: 40px;
+        padding: 0;
+      }
+    }
+
+    .p_flowst_1 {
+      background-color: #fff !important;
+      color: #fff;
+      cursor: pointer;
+
+      .ivu-table-cell {
+        height: 40px;
+        padding: 0;
+      }
+    }
+
+    .p_flowst_2 {
+      background-color: #fff !important;
+      color: #fff;
+      cursor: pointer;
+
+      .ivu-table-cell {
+        height: 40px;
+        padding: 0;
+      }
+    }
+
+    .p_flowst_3 {
+      background-color: #fff !important;
+      color: #fff;
+      cursor: pointer;
+
+      .ivu-table-cell {
+        height: 40px;
+        padding: 0;
+      }
+    }
+  }
+}
+
+.dataBlocks {
+  .icon {
+    margin-left: 5px;
+  }
+}
+
+/deep/ .ivu-tooltip-rel {
+  height: 100% !important;
+}
+
+/deep/ .ivu-table th {
+  height: auto;
+  white-space: normal;
+}
+
+/deep/ .ivu-table-cell {
+  white-space: normal !important;
+  word-wrap: normal !important;
+}

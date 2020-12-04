@@ -1,0 +1,180 @@
+.cover {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+
+  .box {
+    position: absolute;
+    width: 900px;
+    background-color: #fff;
+    padding: 60px 20px 0px 20px;
+    border-radius: 10px;
+    max-height: 600px;
+
+    .form {
+      max-height: 800px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .table_form {
+      max-height: 470px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+    }
+
+    .title {
+      display: flex;
+      position: absolute;
+      height: 40px;
+      width: 100%;
+      line-height: 40px;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 20px;
+      top: 0;
+      border-bottom: 1px solid #efefef;
+      left: 0;
+
+      .title-text {
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+    .btnMar{
+      button{
+        margin-right: 8px;
+      }
+    }
+    .form_box {
+      /deep/ .ivu-form {
+        max-height: 470px;
+        overflow: auto;
+        scrollbar-width: thin;
+
+        .ivu-form-item {
+          margin-bottom: 0px !important;
+          margin-top: 20px !important;
+        }
+
+        .marNT {
+          margin-top: 0px !important;
+        }
+      }
+
+      .btnStyle {
+        margin: 20px 0;
+      }
+    }
+
+    .btnSize {
+      margin: 20px 0;
+
+      button {
+        margin-left: 10px;
+      }
+    }
+
+    .btnSize1 {
+      margin: 20px 0;
+      padding-right: 7px;
+
+      button {
+        margin-left: 10px;
+      }
+    }
+    .btnSize2{
+      margin: 20px 0;
+    }
+    .btnSize3{
+      margin:0 0 20px 0;
+    }
+
+    .menu {
+      height: 500px;
+
+      .menuList {
+        text-align: center;
+        height: 50px;
+        background: lightgray;
+        line-height: 50px;
+        color: white;
+        font-size: 15px;
+        border: 1px solid black;
+      }
+
+      .menuList:hover {
+        background: red;
+      }
+
+      div:nth-of-type(1) {
+        border-bottom: 0;
+      }
+
+      div:nth-of-type(2) {
+        border-bottom: 0;
+      }
+
+      div:nth-of-type(3) {
+        border-bottom: 0;
+      }
+
+      div:nth-of-type(4) {
+        border-bottom: 0;
+      }
+    }
+  }
+
+  /deep/ .ivu-form-item {
+    margin-top: 0 !important;
+    margin-bottom: 20px;
+  }
+  /deep/ .Row-box>div:last-child .ivu-form-item {
+    margin-bottom: 0 !important;
+  }
+}
+
+.noButton {
+  .box {
+    padding: 60px 20px 20px 20px;
+
+    .condition {
+      display: flex;
+      flex-direction: column;
+
+      .conditionTable {
+        flex: 1;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+.sing {
+  border-top: 1px solid #ccc;
+  padding-bottom: 20px;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+// 主子表查看样式
+.treebtn {
+  margin-bottom: 20px;
+}
+
+// 流程配置平台，特殊条件设置样式
+.settlement {
+  width: 83%;
+  margin-right: 20px;
+}

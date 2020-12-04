@@ -1,0 +1,80 @@
+/deep/ .ivu-upload{
+    width:100%;
+}
+/deep/ .ivu-upload-list{
+    margin:0;
+}
+.formItem{
+    /deep/ .ivu-form-item-content{
+        line-height:0;
+    }
+}
+.uploadBtn{
+    cursor: pointer;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+    height:32px;
+    border:1px dashed rgba(181,181,181,1);
+    border-radius:4px;
+
+    .ivu-icon{
+      color:rgba(106, 177, 255, 1)
+    }
+  }
+.file{
+    margin-left:10px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    background:rgba(234,244,255,1);
+    border-radius:4px;
+    color:rgba(153, 153, 153, 1);
+    line-height: 32px;
+    .upFile{
+        font-size:0;
+        display:flex;
+        justify-content:start;
+        align-items:center;
+        .fileName{
+          color:rgba(153, 153, 153, 1);
+          font-size:12px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        .fileImg{
+          margin:0 10px;
+          width:18px;
+          height:18px;
+        }
+    }
+    .ivu-btn{
+        color:rgba(58, 141, 224, 1);
+    }
+    a{
+        margin-right:10px;
+    }
+}
+.moreFile {
+    margin:0 0 5px 10px;
+    display:flex;
+    align-items:center;
+    background:rgba(234,244,255,1);
+    border-radius:4px;
+    color:rgba(153, 153, 153, 1);
+    line-height: 32px;
+    .fileName{
+        color:rgba(153, 153, 153, 1);
+        font-size:12px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .fileImg{
+        margin:0 10px;
+        width:18px;
+        height:18px;
+    }
+}

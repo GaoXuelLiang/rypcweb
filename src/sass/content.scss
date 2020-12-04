@@ -1,0 +1,52 @@
+.table_box {
+  height: 100%;
+}
+
+.table {
+  height: 100%;
+}
+
+.table .table_main {
+  height: 100%;
+}
+
+.table .table_main .ivu-col {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.table .table_main .ivu-card {
+  height: 100%;
+}
+
+.table .table_main .ivu-card-body {
+  height: calc(100% - 39px);
+  display: flex;
+  flex-direction: column;
+}
+
+.table .table_main .table-form {
+  flex: 1;
+}
+
+.table .table_main .ivu-table-wrapper {
+  height: 100%;
+}
+
+.table .table_main .ivu-table {
+  display: flex;
+  flex-direction: column;
+}
+
+.table .table_main .ivu-table-body {
+  flex: 1;
+}
+
+.table .table_main .ivu-table-tip {
+  height: 100%;
+}
+
+.table .table_main .ivu-table-tip table {
+  height: 100%;
+}

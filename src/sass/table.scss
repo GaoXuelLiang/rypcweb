@@ -1,0 +1,68 @@
+
+.ivu-table .demo-table-error-row td{
+  background-color: #feedd3;
+  color: #888b92;
+}
+.ivu-table-header thead tr th{
+  background-color: #EDEDED;
+}
+.ivu-table-stripe .ivu-table-body tr:nth-child(2n) td, .ivu-table-stripe .ivu-table-fixed-body tr:nth-child(2n) td{
+  border-top:1px solid #EDEDED !important;
+}
+ .ivu-table-body {
+  border-bottom: 1px solid #e5e5e5 !important;
+}
+.ivu-table td, .ivu-table th{
+  border: none !important;
+}
+.ivu-table-fixed-header thead tr th {
+  position: relative;
+  height: 100%;
+  padding: 8px 0;
+  background: #EDEDED;
+}
+.ivu-table-fixed-right-header {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  background-color: #f8f8f9;
+   border-top: 0px solid #dcdee2;
+  border-bottom: 1px solid #e8eaec;
+}
+.ivu-table-cell {
+  padding-left: 10px;
+  padding-right: 10px;
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+  box-sizing: border-box;
+}
+// loading颜色透明度
+.ivu-spin-fix {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 8;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(249, 249, 249, 0.5);
+  border-radius: 5px;
+}
+// 操作项下边框
+.ivu-table-fixed-right::before, .ivu-table-fixed::before {
+  content: '';
+  width: 100%;
+  height: 0px;
+  background-color: #dcdee2;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 4;
+}
+.ivu-table-tip{
+  border-bottom: 1px solid #e5e5e5;
+}
+.ivu-table-tip td{
+  width: 100% !important;
+}

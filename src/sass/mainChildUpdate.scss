@@ -1,0 +1,221 @@
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+
+  .box {
+    position: absolute;
+    width: 1100px;
+    background-color: #fff;
+    padding: 0;
+    border-radius: 10px;
+
+    .meau-left {
+      padding-top: 40px;
+      height: 600px;
+      background: #f5f5f5;
+      text-align: center;
+      border-radius: 10px 0 0 10px;
+
+      .ivu-menu-light {
+        background: #f5f5f5;
+        height: 516px;
+        overflow: auto;
+        scrollbar-width: thin;
+        border-radius: 0 0 0 10px;
+
+        /deep/ .ivu-menu-item-active:not(.ivu-menu-submenu) {
+          background: #fff;
+        }
+
+        /deep/ .ivu-menu-item-active:not(.ivu-menu-submenu):after {
+          width: 4px;
+          height: 70%;
+          left: 0;
+          top: 8px;
+        }
+      }
+
+      /deep/ .ivu-menu-vertical.ivu-menu-light:after {
+        background: #f5f5f5 !important;
+      }
+    }
+
+    .title {
+      display: flex;
+      height: 40px;
+      width: 100%;
+      line-height: 40px;
+      justify-content: space-between;
+      align-items: center;
+      padding-left: 20px;
+      border-bottom: 1px solid #efefef;
+      position: static;
+
+      .title-text {
+        font-weight: bold;
+        font-size: 14px;
+      }
+    }
+
+    .meau-right {
+      position: relative;
+      // border-left: 2px solid #F5F5F5;
+      height: 600px;
+      display: flex;
+      flex-direction: column;
+
+      .menu_content {
+        flex: 1;
+      }
+
+      .option-main {
+        padding: 20px;
+        height: 100%;
+
+        .form_box {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+
+          form {
+            flex: 1;
+            overflow: auto;
+            scrollbar-width: thin;
+            max-height: 468px;
+          }
+
+          .form_list {
+            flex: 1;
+            overflow: auto;
+            scrollbar-width: thin;
+            max-height: 488px;
+          }
+
+          .form_list_y {
+            flex: 1;
+            overflow: auto;
+            scrollbar-width: thin;
+            max-height: 468px;
+          }
+
+          .btnSize {
+            margin: 0;
+
+            button {
+              margin-left: 10px;
+            }
+          }
+
+          .btnSize1 {
+            margin: 20px 0 20px 0;
+            padding-right: 7px;
+
+            button {
+              margin-left: 10px;
+            }
+          }
+
+          .btn {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+          }
+
+          .marginL-10 {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    .width-900 {
+      width: 900px;
+    }
+
+    .header-cover {
+      display: none;
+      top: 0;
+      right: 0;
+      color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .header-box {
+      display: flex;
+      position: relative;
+      justify-content: flex-end;
+    }
+
+    .header-box:hover .header-cover {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header-box:hover {
+      cursor: pointer;
+    }
+
+    .header {
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity 0.2s;
+    }
+
+    .fade-enter,
+    .fade-leave-to {
+      opacity: 0;
+    }
+  }
+
+  .autoPage {
+    width: 1100px;
+
+    .main_box {
+      display: flex;
+
+      .meau-left {
+        flex: 1;
+      }
+
+      .meau-right {
+        width: 900px;
+      }
+    }
+  }
+
+  /deep/ .ivu-form-item {
+    // margin-top: 20px !important;
+    // margin-bottom: 0;
+    margin-bottom: 20px !important;
+    margin-top: 0;
+  }
+
+  /deep/ .option-main .Row-box>div:last-child .ivu-form-item {
+    margin-bottom: 0 !important;
+  }
+
+  // /deep/ .ivu-form .ivu-row:first-child .ivu-form-item {
+  //   margin-top: 0 !important;
+  // }
+}

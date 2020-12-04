@@ -1,0 +1,193 @@
+<template>
+  <div class="cover">
+    <div class="box">
+      <Spin size="large"
+                  fix
+                  v-if="spinShow"></Spin>
+      <div class="title">
+        <div class="title-text">
+          <Icon type="ios-bookmark" size="16"></Icon>
+          {{$t('lang_payroll.platAplInfo.flsRelation')}}
+        </div>
+        <Button type="text" @click="handleReset">
+          <Icon type="md-close" size="20"></Icon>
+        </Button>
+      </div>
+      <div class="option-main">
+        <Row>
+          <Form ref="formValidate" disabled :model="formValidate" label-position="right" :label-width="135">
+            <i-col span="21" offset="1">
+              <FormItem :label="$t('lang_payroll.platAplInfo.apstrelConditiontitle')">
+                <Input v-model="formValidate.apstrelConditiontitle" :placeholder="$t('lang_payroll.platAplInfo.apstrelConditiontitleIns')"></Input>
+              </FormItem>
+            </i-col>
+            <i-col span="21" offset="1">
+              <FormItem :label="$t('lang_payroll.platAplInfo.apstrelConditiondis')">
+                <Input v-model="formValidate.apstrelConditiondis" readonly="readonly" type="textarea" :autosize="{minRows: 2,maxRows: 5}" :placeholder="$t('lang_payroll.platAplInfo.apstrelConditiondisIns')" class="settlement"></Input>
+              	<Button type="primary" @click="generConditionNow(NaN,$t('lang_payroll.platAplInfo.condion'))">{{$t('lang_payroll.platAplInfo.condion')}}</Button>
+              </FormItem>
+            </i-col>
+            <i-col span="21" offset="1">
+              <FormItem :label="$t('lang_payroll.platAplInfo.apstrelCommment')">
+                <Input v-model="formValidate.apstrelCommment" type="textarea" :autosize="{minRows: 2,maxRows: 5}" :placeholder="$t('lang_payroll.platAplInfo.apstrelCommmentIns')"></Input>
+              </FormItem>
+            </i-col>
+            <!-- <i-col span="21" offset="1">
+              <row type="flex" justify="end"> 
+                  <FormItem>
+                      <Button @click="handleReset">{{$t('button.cal')}}</Button>
+                      <Button class="btn"
+                              type="primary"
+                              @click="save">{{$t('button.sav')}}</Button>
+                  </FormItem>
+              </row>
+            </i-col> -->
+          </Form>
+          <i-col span="21" offset="1">
+              <row type="flex" justify="end" class="treebtn"> 
+                <Button @click="handleReset">{{$t('button.cal')}}</Button>
+              </row>
+            </i-col>
+        </Row>
+      </div>
+    </div>
+    <transition name="fade">
+      <genrCondition v-show="openCondition"  @inputCondition="inputCondition"  @closeCondition="closeCondition"  ref="genrCondition"></genrCondition>
+    </transition>
+  </div>
+</template>
+<script>
+  //import { getDataLevelUserLoginNew, getDataLevelUserLogin } from '../../../../axios/axios'
+  import { getDataLevelUserLoginData } from '@/axios/axios'
+  import { isSuccess, deepCopy } from '../../../../lib/util'
+  import genrCondition from '../flowStep/genrCondition'
+  import Bus from '../../../.././lib/bus'
+
+  export default {
+    data() {
+      return {
+        spinShow: false,
+        id: '', // 线的id
+        transmitName: '',
+        transmitValue: '',
+        openCondition: false,
+        formValidate: {
+          _mt:  this.$global.mt+'PlatAprvsteprelation.addOrUpd',
+          APfunId: '1',
+          apstrelConditiontitle: '',
+          apstrelCondition: '',
+          apstrelConditiondis: '',
+          apstrelCommment: '',
+        },
+      }
+    },
+    components: {
+      genrCondition,
+    },
+    mounted() {
+      Bus.$on('setAprvLineId', () => {
+        this.getdata()
+      })
+    },
+    methods: {
+      /*
+      * 修改时初始数据
+      * */
+      getdata() {
+        const t = this;
+        t.spinShow = true;
+        const data = {
+          _mt:  this.$global.mt+'PlatAprvsteprelation.getById',
+          APid: t.id,      //  步骤id
+          APfunId: '1',
+          APlogType: this.$t('button.ser'),
+        }
+        getDataLevelUserLoginData(data).then((res) => {
+          if (isSuccess(res, t)) {
+            this.formValidate.apstrelConditiontitle = res.data.content[0].apstrelConditiontitle
+            this.formValidate.apstrelCondition = res.data.content[0].apstrelCondition
+            this.formValidate.apstrelConditiondis = res.data.content[0].apstrelConditiondis
+          }
+        }).catch(() => {
+          t.$Modal.error({
+            title: this.$t('reminder.err'),
+            content: this.$t('reminder.errormessage'),
+          })
+        }).finally(()=>{
+          t.spinShow = false;
+        })
+      },
+      /*
+      * 新增或者修改
+      * */
+      save() {
+        const t = this
+        const data = deepCopy(t.formValidate)
+        data.APlogType = '修改'
+        data.APid = t.id
+        getDataLevelUserLoginData(data).then((res) => {
+          if (isSuccess(res, t)) {
+            t.$emit('editLineFlowChart', data)
+            if (!t.id) {
+              t.$Modal.success({
+                title: this.$t('reminder.suc'),
+                content: this.$t('reminder.savsuccess'),
+              })
+            } else {
+              t.$Modal.success({
+                title: this.$t('reminder.suc'),
+                content: this.$t('reminder.savsuccess'),
+              })
+            }
+            this.$emit('closeUp')
+          }
+        }).catch(() => {
+          t.$Modal.error({
+            title: this.$t('reminder.err'),
+            content: this.$t('reminder.errormessage'),
+          })
+        })
+      },
+      setLineId(id) {
+        this.id = id
+        this.getdata()
+      },
+      handleReset() {
+        this.$emit('closeUp')
+      },
+      clear() {
+      	this.formValidate.apstrelConditiontitle = ''
+        this.formValidate.apstrelCondition = ''
+        this.formValidate.apstrelConditiondis = ''
+        this.flstepFlowDis = ''
+        this.flstepCnName = ''
+        this.flstepEnName = ''
+        this.flstepIsapprove = ''
+        this.flstepApproveDis = ''
+        this.formValidate.apstrelCommment = ''
+        this.$refs.formValidate.resetFields()
+      },
+      generConditionNow(id) {
+      	const t = this
+      	if (t.formValidate.apstrelConditiondis && t.formValidate.apstrelCondition) {
+      		t.transmitName = t.formValidate.apstrelConditiondis
+	      	t.transmitValue = t.formValidate.apstrelCondition
+	      	t.$refs.genrCondition.getData(t.transmitName, t.transmitValue)
+      	}
+      	t.openCondition = true
+      },
+      closeCondition() {
+      	const t = this
+      	t.openCondition = false
+      },
+      inputCondition(name, value) {
+      	const t = this
+      	t.formValidate.apstrelCondition = value
+        t.formValidate.apstrelConditiondis = name
+      },
+    },
+  }
+</script>
+<style lang="scss" scoped>
+  @import "../../../../sass/updateAndAdd.scss";
+</style>

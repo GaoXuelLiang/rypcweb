@@ -1,0 +1,59 @@
+.content-main {
+  height: 560px;
+  padding: 7px 20px 10px 20px;
+
+  .btnHeight {
+    font-size: 0;
+    flex-wrap: wrap;
+
+    /deep/ .ivu-btn {
+      margin-right: 10px;
+    }
+    .pickData {
+      cursor: pointer;
+    }
+  }
+
+  .table_search_int {
+    width: 200px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  .table-form {
+    margin: 10px 0;
+
+    /deep/ .ivu-table-overflowY{
+      scrollbar-width: thin;
+    }
+    /deep/ .ivu-table-overflowX{
+      scrollbar-width: thin;
+    }
+  }
+  .refresh {
+    margin-left: 20px;
+    display: inline-block;
+  }
+}
+.autoChildTable {
+  .table_search_int {
+    margin-bottom: 0px;
+  }
+
+  .btnHeight {
+    line-height: 43px;
+  }
+
+  .table-form {
+    margin: 5px 0 10px 0
+  }
+}
+
+.ivu-date-picker {
+  position: relative;
+  vertical-align: middle;
+  line-height: normal;
+  display: inline-block;
+  line-height: normal;
+  font-size: x-small;
+}
